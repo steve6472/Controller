@@ -175,8 +175,6 @@ public class AdvancedGui
 					continue;
 				}
 
-				Bukkit.getLogger().info("Saving " + getItem(i, j).getType() + " at " + i + "/" + j);
-
 				NBTTagCompound nbtTagCompoundItem = new NBTTagCompound();
 				CraftItemStack.asNMSCopy(getItem(i, j)).save(nbtTagCompoundItem);
 				container.set(new NamespacedKey(Controller.getInstance(), i + "x" + j), PersistentDataType.STRING, nbtTagCompoundItem.toString());
@@ -267,7 +265,6 @@ public class AdvancedGui
 	public void setItem(int x, int y, ItemStack item)
 	{
 		items[x][y] = item;
-		Bukkit.getLogger().info("Adding " + item.getType() + " at " + x + "/" + y);
 	}
 
 	public void setEditing(int x, int y)

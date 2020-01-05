@@ -1,45 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cfeec45d-389f-4827-8e99-4fa763610bc2" name="Default Changelist" comment="" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <list default="true" id="8eab0883-f238-40bd-9d14-5e2672ec8294" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="CodeInsightWorkspaceSettings">
-    <option name="optimizeImportsOnTheFly" value="true" />
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Enum" />
-        <option value="Class" />
-        <option value="Interface" />
-      </list>
-    </option>
-  </component>
-  <component name="MavenImportPreferences">
-    <option name="importingSettings">
-      <MavenImportingSettings>
-        <option name="downloadDocsAutomatically" value="true" />
-        <option name="downloadSourcesAutomatically" value="true" />
-      </MavenImportingSettings>
-    </option>
-  </component>
-  <component name="ProjectId" id="1Vspn1qECacj9eTADFpEv0YCZoG" />
+  <component name="ProjectId" id="1VyfTlW6MRfst07edbzgLjhDNnr" />
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
-  </component>
-  <component name="RecentsManager">
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.steve6472.controller.items.enums" />
-      <recent name="com.steve6472.controller" />
-      <recent name="advancedguitest.items" />
-      <recent name="advancedguitest" />
-    </key>
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../server/server.jar" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -53,22 +23,26 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Maven.AdvancedGuiTest build">
+  <component name="RunManager" selected="Maven.Controller">
     <configuration name="Server" type="JarApplication">
       <option name="JAR_PATH" value="$PROJECT_DIR$/../server/server.jar" />
       <option name="VM_PARAMETERS" value="-DIReallyKnowWhatIAmDoingISwear" />
       <option name="WORKING_DIRECTORY" value="D:\server" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <method v="2" />
+      <method v="2">
+        <option name="Maven.BeforeRunTask" enabled="true" file="$PROJECT_DIR$/pom.xml" goal="compile package" />
+      </method>
     </configuration>
     <configuration default="true" type="JarApplication">
       <option name="JAR_PATH" value="$PROJECT_DIR$/../server/server.jar" />
       <option name="VM_PARAMETERS" value="-DIReallyKnowWhatIAmDoingISwear" />
       <option name="WORKING_DIRECTORY" value="D:\server" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <method v="2" />
+      <method v="2">
+        <option name="Maven.BeforeRunTask" enabled="true" file="$PROJECT_DIR$/pom.xml" goal="compile package" />
+      </method>
     </configuration>
-    <configuration name="AdvancedGuiTest build" type="MavenRunConfiguration" factoryName="Maven">
+    <configuration name="Controller" type="MavenRunConfiguration" factoryName="Maven">
       <MavenSettings>
         <option name="myGeneralSettings" />
         <option name="myRunnerSettings" />
@@ -96,17 +70,10 @@
     </configuration>
     <list>
       <item itemvalue="JAR Application.Server" />
-      <item itemvalue="Maven.AdvancedGuiTest build" />
+      <item itemvalue="Maven.Controller" />
     </list>
   </component>
   <component name="TaskManager">
-    <task active="true" id="Default" summary="Default task">
-      <changelist id="cfeec45d-389f-4827-8e99-4fa763610bc2" name="Default Changelist" comment="" />
-      <created>1578051819079</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1578051819079</updated>
-    </task>
     <servers />
   </component>
 </project>
