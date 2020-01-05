@@ -1,4 +1,0 @@
-name: Controller
-version: ${project.version}
-main: com.steve6472.controller.Controller
-api-version: 1.13
