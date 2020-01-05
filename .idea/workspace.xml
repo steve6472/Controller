@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8eab0883-f238-40bd-9d14-5e2672ec8294" name="Default Changelist" comment="" />
+    <list default="true" id="d6a5544b-2bc0-44db-862f-658b1febdbdd" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -22,56 +22,6 @@
         </RuleState>
       </list>
     </option>
-  </component>
-  <component name="RunManager" selected="Maven.Controller">
-    <configuration name="Server" type="JarApplication">
-      <option name="JAR_PATH" value="$PROJECT_DIR$/../server/server.jar" />
-      <option name="VM_PARAMETERS" value="-DIReallyKnowWhatIAmDoingISwear" />
-      <option name="WORKING_DIRECTORY" value="D:\server" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method v="2">
-        <option name="Maven.BeforeRunTask" enabled="true" file="$PROJECT_DIR$/pom.xml" goal="compile package" />
-      </method>
-    </configuration>
-    <configuration default="true" type="JarApplication">
-      <option name="JAR_PATH" value="$PROJECT_DIR$/../server/server.jar" />
-      <option name="VM_PARAMETERS" value="-DIReallyKnowWhatIAmDoingISwear" />
-      <option name="WORKING_DIRECTORY" value="D:\server" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method v="2">
-        <option name="Maven.BeforeRunTask" enabled="true" file="$PROJECT_DIR$/pom.xml" goal="compile package" />
-      </method>
-    </configuration>
-    <configuration name="Controller" type="MavenRunConfiguration" factoryName="Maven">
-      <MavenSettings>
-        <option name="myGeneralSettings" />
-        <option name="myRunnerSettings" />
-        <option name="myRunnerParameters">
-          <MavenRunnerParameters>
-            <option name="profiles">
-              <set />
-            </option>
-            <option name="goals">
-              <list>
-                <option value="clean" />
-                <option value="package" />
-              </list>
-            </option>
-            <option name="pomFileName" />
-            <option name="profilesMap">
-              <map />
-            </option>
-            <option name="resolveToWorkspace" value="false" />
-            <option name="workingDirPath" value="$PROJECT_DIR$" />
-          </MavenRunnerParameters>
-        </option>
-      </MavenSettings>
-      <method v="2" />
-    </configuration>
-    <list>
-      <item itemvalue="JAR Application.Server" />
-      <item itemvalue="Maven.Controller" />
-    </list>
   </component>
   <component name="TaskManager">
     <servers />
