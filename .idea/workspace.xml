@@ -1,15 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d6a5544b-2bc0-44db-862f-658b1febdbdd" name="Default Changelist" comment="" />
+    <list default="true" id="bbb2a89d-dae7-481c-9e6a-c283a33b56e0" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="ProjectId" id="1VyfTlW6MRfst07edbzgLjhDNnr" />
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../server/server.jar" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.steve6472.controller.items.events" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -23,7 +39,53 @@
       </list>
     </option>
   </component>
+  <component name="RunManager" selected="Maven.controller [clean,package]">
+    <configuration name="Server" type="JarApplication">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/../server/server.jar" />
+      <option name="VM_PARAMETERS" value="-DIReallyKnowWhatIAmDoingISwear" />
+      <option name="WORKING_DIRECTORY" value="D:\server" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method v="2" />
+    </configuration>
+    <configuration name="controller [clean,package]" type="MavenRunConfiguration" factoryName="Maven" nameIsGenerated="true">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="clean" />
+                <option value="package" />
+              </list>
+            </option>
+            <option name="pomFileName" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="JAR Application.Server" />
+      <item itemvalue="Maven.controller [clean,package]" />
+    </list>
+  </component>
   <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="bbb2a89d-dae7-481c-9e6a-c283a33b56e0" name="Default Changelist" comment="" />
+      <created>1578234667394</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1578234667394</updated>
+    </task>
     <servers />
   </component>
 </project>

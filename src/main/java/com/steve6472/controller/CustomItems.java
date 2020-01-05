@@ -3,6 +3,8 @@ package com.steve6472.controller;
 import com.steve6472.controller.items.*;
 import com.steve6472.controller.items.enums.EnumItemSlot;
 import com.steve6472.controller.items.enums.EnumOperator;
+import com.steve6472.controller.items.events.*;
+import com.steve6472.controller.items.events.GetItem;
 import com.steve6472.controller.items.ifitem.If;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -34,15 +36,17 @@ public class CustomItems
 	public static final CustomItem DELAY = new Delay(2004, false);
 	public static final CustomItem IF = new If(2005);
 	public static final CustomItem SET_ITEM = new SetItem(2006);
+	public static final CustomItem WAIT_FOR_EVENT = new WaitFor(2007);
 
-	public static final CustomItem END = new NormalCustomItem(2007, Material.LIME_STAINED_GLASS_PANE, ChatColor.GREEN + "End");
-	public static final CustomItem DO = new SelfAddingItem(2008, Material.LIME_STAINED_GLASS_PANE, ChatColor.GREEN + "Do");
+	public static final CustomItem END = new NormalCustomItem(2498, Material.LIME_STAINED_GLASS_PANE, ChatColor.GREEN + "End");
+	public static final CustomItem DO = new SelfAddingItem(2499, Material.LIME_STAINED_GLASS_PANE, ChatColor.GREEN + "Do");
 
 	/* 2500 - 2999 - Required Items */
 	public static final CustomItem ADD_BOOLEAN = new AddBooleanOperator(2500, Material.RED_STAINED_GLASS_PANE, ChatColor.RED + "Click to add Boolean (required)");
 	public static final CustomItem BOOLEAN_OPERATOR_OR_DO = new AddBooleanOperator(2501, Material.RED_STAINED_GLASS_PANE, ChatColor.RED + "Click to add Boolean Operator or Do (required)");
 	public static final CustomItem ADD_END = new AddEnd(2502);
 	public static final CustomItem ADD_ITEM = new SelfAddingItem(2503, Material.RED_STAINED_GLASS_PANE, ChatColor.RED + "Add Item", ChatColor.WHITE + "Click here with item");
+	public static final CustomItem ADD_EVENT = new AddEvent(2504);
 
 	/* 3000 - 3999 - Comparable */
 	//TODO: Add target
@@ -58,6 +62,21 @@ public class CustomItems
 	public static final CustomItem GET_ITEM_IN_MAIN_HAND = new SelfAddingItem(3008, Material.WHITE_STAINED_GLASS_PANE, ChatColor.AQUA + "Get item in Players Main Hand", ChatColor.GRAY + "Item");
 	public static final CustomItem GET_ITEM_IN_OFF_HAND = new SelfAddingItem(3009, Material.WHITE_STAINED_GLASS_PANE, ChatColor.AQUA + "Get item in Players Off Hand", ChatColor.GRAY + "Item");
 	public static final CustomItem EMPTY_ITEM = new SelfAddingItem(3010, Material.WHITE_STAINED_GLASS_PANE, ChatColor.AQUA + "Empty", ChatColor.GRAY + "Item");
+
+	public static final CustomItem EVENT_BREAK_BLOCK = new EventBreakBlock(3011);
+	public static final CustomItem EVENT_PLACE_BLOCK = new EventPlaceBlock(3012);
+	public static final CustomItem EVENT_DROP_ITEM = new EventDropItem(3013);
+	public static final CustomItem EVENT_PICKUP_ITEM = new EventPickUpItem(3014);
+	public static final CustomItem EVENT_CONSUME_ITEM = new EventConsumeItem(3015);
+	public static final CustomItem EVENT_FISH = new EventFish(3016);
+
+	public static final CustomItem GET_EVENT_BREAK_BLOCK = new GetItem(3017, "Get Last Broken Block", "Block");
+	public static final CustomItem GET_EVENT_PLACE_BLOCK = new GetItem(3018, "Get Last Placed Block", "Block");
+	public static final CustomItem GET_EVENT_DROP_ITEM = new GetItem(3019, "Get Last Dropped Item", "Item");
+	public static final CustomItem GET_EVENT_PICKUP_ITEM = new GetItem(3020, "Get Last Picked Up Item", "Item");
+	public static final CustomItem GET_EVENT_CONSUME_ITEM = new GetItem(3021, "Get Last Consumed Item", "Item");
+	public static final CustomItem GET_EVENT_FISH_ITEM = new GetItem(3022, "Get Last Fished Item", "Item");
+	public static final CustomItem GET_EVENT_FISH_STATE = new GetItem(3023, "Get Last Fish State", "Fish State");
 
 	/* 4000 Boolean Operators */
 	public static final CustomItem EQUALS = new Operator(4000, EnumOperator.EQUALS, ChatColor.GRAY + "Operator");

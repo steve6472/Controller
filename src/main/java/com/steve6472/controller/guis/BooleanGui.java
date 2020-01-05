@@ -40,7 +40,15 @@ public class BooleanGui implements IControllerGui
 		inv.setItem(11, CustomItems.EMPTY_ITEM.create());
 		inv.setItem(12, CustomItems.ADD_ITEM.create(ChatColor.RED + "" + ChatColor.UNDERLINE + "Works only in Editor!"));
 
-		inv.setItem(18, CustomItems.DO.create());
+		inv.setItem(18, CustomItems.GET_EVENT_BREAK_BLOCK.create());
+		inv.setItem(19, CustomItems.GET_EVENT_PLACE_BLOCK.create());
+		inv.setItem(20, CustomItems.GET_EVENT_DROP_ITEM.create());
+		inv.setItem(21, CustomItems.GET_EVENT_PICKUP_ITEM.create());
+		inv.setItem(22, CustomItems.GET_EVENT_CONSUME_ITEM.create());
+		inv.setItem(23, CustomItems.GET_EVENT_FISH_ITEM.create());
+		inv.setItem(24, CustomItems.GET_EVENT_FISH_STATE.create());
+
+		inv.setItem(27, CustomItems.DO.create());
 
 		additionalItems.process(player, inv);
 

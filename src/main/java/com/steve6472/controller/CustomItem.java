@@ -30,7 +30,7 @@ public abstract class CustomItem
 	private final String name;
 	private final String[] lore;
 
-	protected CustomItem(int id, Material material, String name, String... lore)
+	public CustomItem(int id, Material material, String name, String... lore)
 	{
 		this.id = id;
 		this.material = material;

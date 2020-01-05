@@ -12,6 +12,8 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerChatEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.event.player.PlayerKickEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -25,6 +27,7 @@ public final class Controller extends JavaPlugin implements Listener
 	private static Controller INSTANCE;
 
 	private static Map<Player, AdvancedGui> advancedGui;
+	public static Map<Player, AdvancedGui> pausedGuis;
 
 	private static HashMap<Class<? extends IControllerGui>, IControllerGui> guis;
 
@@ -57,6 +60,20 @@ public final class Controller extends JavaPlugin implements Listener
 		}
 
 		gui.clickAdvancedGui(e, CustomItem.getCustomItem(currentItem));
+	}
+
+	@EventHandler
+	public void playerQuit(PlayerQuitEvent e)
+	{
+		advancedGui.remove(e.getPlayer());
+		pausedGuis.remove(e.getPlayer());
+	}
+
+	@EventHandler
+	public void playerKick(PlayerKickEvent e)
+	{
+		advancedGui.remove(e.getPlayer());
+		pausedGuis.remove(e.getPlayer());
 	}
 
 	/*
@@ -107,10 +124,13 @@ public final class Controller extends JavaPlugin implements Listener
 
 		if (e.getAction() == Action.LEFT_CLICK_AIR || e.getAction() == Action.LEFT_CLICK_BLOCK)
 		{
-			AdvancedGui gui = new AdvancedGui(e.getPlayer());
-			advancedGui.put(e.getPlayer(), gui);
-			advancedGui.get(e.getPlayer()).run(e.getPlayer());
-			advancedGui.remove(e.getPlayer());
+			if (pausedGuis.get(e.getPlayer()) == null)
+			{
+				AdvancedGui gui = new AdvancedGui(e.getPlayer());
+				advancedGui.put(e.getPlayer(), gui);
+				advancedGui.get(e.getPlayer()).run(e.getPlayer());
+				advancedGui.remove(e.getPlayer());
+			}
 		} else
 		{
 			AdvancedGui gui = new AdvancedGui(e.getPlayer());
@@ -126,6 +146,7 @@ public final class Controller extends JavaPlugin implements Listener
 		INSTANCE = this;
 
 		advancedGui = new HashMap<>();
+		pausedGuis = new HashMap<>();
 		guis = new HashMap<>();
 
 		Bukkit.getPluginManager().registerEvents(this, INSTANCE);
@@ -135,6 +156,7 @@ public final class Controller extends JavaPlugin implements Listener
 		addGui(StatementGui.class, new StatementGui());
 		addGui(BooleanGui.class, new BooleanGui());
 		addGui(ItemGui.class, new ItemGui());
+		addGui(EventGui.class, new EventGui());
 	}
 
 	@Override

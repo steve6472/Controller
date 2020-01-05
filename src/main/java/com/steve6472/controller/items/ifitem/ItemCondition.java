@@ -3,6 +3,10 @@ package com.steve6472.controller.items.ifitem;
 import com.steve6472.controller.CustomItem;
 import com.steve6472.controller.CustomItems;
 import com.steve6472.controller.guis.AdvancedGui;
+import com.steve6472.controller.items.events.EventConsumeItem;
+import com.steve6472.controller.items.events.EventDropItem;
+import com.steve6472.controller.items.events.EventFish;
+import com.steve6472.controller.items.events.EventPickUpItem;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -40,28 +44,14 @@ public class ItemCondition implements IIfCondition
 			return false;
 		}
 
-		ItemStack left = null, right = null;
+		ItemStack left , right;
 
-		if (start == CustomItems.GET_ITEM_IN_MAIN_HAND)
-			if (player.getEquipment() != null)
-				left = player.getEquipment().getItemInMainHand();
-
-		if (start == CustomItems.GET_ITEM_IN_OFF_HAND)
-			if (player.getEquipment() != null)
-				left = player.getEquipment().getItemInOffHand();
-
-		if (start == null)
+		left = getItem(player, start);
+		if (left == null)
 			left = gui.getItem(x, y);
 
-		if (last == CustomItems.GET_ITEM_IN_MAIN_HAND)
-			if (player.getEquipment() != null)
-				right = player.getEquipment().getItemInMainHand();
-
-		if (last == CustomItems.GET_ITEM_IN_OFF_HAND)
-			if (player.getEquipment() != null)
-				right = player.getEquipment().getItemInOffHand();
-
-		if (last == null)
+		right = getItem(player, last);
+		if (right == null)
 			right = gui.getItem(x + 2, y);
 
 		boolean equals = false;
@@ -81,6 +71,31 @@ public class ItemCondition implements IIfCondition
 			return root.evaluate(player, gui, x + 3, y, !equals);
 
 		return false;
+	}
+
+	private ItemStack getItem(Player player, CustomItem item)
+	{
+		if (item == CustomItems.GET_ITEM_IN_MAIN_HAND)
+			if (player.getEquipment() != null)
+				return player.getEquipment().getItemInMainHand();
+
+		if (item == CustomItems.GET_ITEM_IN_OFF_HAND)
+			if (player.getEquipment() != null)
+				return player.getEquipment().getItemInOffHand();
+
+		if (item == CustomItems.GET_EVENT_PICKUP_ITEM)
+			return ((EventPickUpItem) CustomItems.EVENT_PICKUP_ITEM).lastPickedUp.getItemStack();
+
+		if (item == CustomItems.GET_EVENT_CONSUME_ITEM)
+			return ((EventConsumeItem) CustomItems.EVENT_CONSUME_ITEM).lastConsumed;
+
+		if (item == CustomItems.GET_EVENT_DROP_ITEM)
+			return ((EventDropItem) CustomItems.EVENT_DROP_ITEM).lastDropped.getItemStack();
+
+		if (item == CustomItems.GET_EVENT_FISH_ITEM)
+			return ((EventFish) CustomItems.GET_EVENT_FISH_ITEM).lastFished.getItemStack();
+
+		return null;
 	}
 
 	@Override

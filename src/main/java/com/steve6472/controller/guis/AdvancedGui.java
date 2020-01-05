@@ -33,6 +33,10 @@ public class AdvancedGui
 	private int width, height;
 
 	private CustomItem input;
+	private CustomItem pauseReason;
+
+	private boolean paused;
+	private int pauseX, pauseY;
 
 	public AdvancedGui(Player player)
 	{
@@ -299,6 +303,38 @@ public class AdvancedGui
 		showY += y;
 
 		show(player);
+	}
+
+	public void pause(Player player, CustomItem pauseReason, int nextX, int nextY)
+	{
+		this.pauseReason = pauseReason;
+		this.paused = true;
+		this.pauseX = nextX;
+		this.pauseY = nextY;
+
+		Controller.pausedGuis.put(player, this);
+	}
+
+	public void unPause(Player player, CustomItem eventItem)
+	{
+		if (getPauseReason() != eventItem)
+			return;
+
+		paused = false;
+		pauseReason = null;
+
+		Controller.pausedGuis.remove(player);
+
+		CustomItem item = CustomItem.getCustomItem(items[pauseX][pauseY]);
+		if (item == null)
+			return;
+
+		item.run(player, pauseX, pauseY, 0, this);
+	}
+
+	public CustomItem getPauseReason()
+	{
+		return pauseReason;
 	}
 
 	public ItemStack getItem(int x, int y)
