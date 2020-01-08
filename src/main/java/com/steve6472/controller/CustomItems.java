@@ -39,6 +39,7 @@ public class CustomItems
 	public static final CustomItem IF = new If(2005);
 	public static final CustomItem SET_ITEM = new SetItem(2006);
 	public static final CustomItem WAIT_FOR_EVENT = new WaitFor(2007);
+	public static final CustomItem GOTO = new Goto(2008);
 
 	public static final CustomItem ELSE = new SelfAddingItem(2497, Material.LIME_STAINED_GLASS_PANE, ChatColor.GREEN + "Else");
 	public static final CustomItem END = new NormalCustomItem(2498, Material.LIME_STAINED_GLASS_PANE, ChatColor.GREEN + "End");

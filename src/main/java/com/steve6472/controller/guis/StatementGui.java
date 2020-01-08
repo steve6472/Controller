@@ -24,6 +24,7 @@ public class StatementGui implements IControllerGui
 		inv.setItem(2, CustomItems.SET_ITEM.create());
 		inv.setItem(3, CustomItems.IF.create());
 		inv.setItem(4, CustomItems.WAIT_FOR_EVENT.create());
+		inv.setItem(5, CustomItems.GOTO.create());
 
 		fillWithNull(inv);
 		player.openInventory(inv);

@@ -125,6 +125,7 @@ public final class Controller extends JavaPlugin implements Listener
 
 		if (e.getAction() == Action.LEFT_CLICK_AIR || e.getAction() == Action.LEFT_CLICK_BLOCK)
 		{
+			/* Prevent from running twice */
 			if (pausedGuis.get(e.getPlayer()) == null)
 			{
 				AdvancedGui gui = new AdvancedGui(e.getPlayer());

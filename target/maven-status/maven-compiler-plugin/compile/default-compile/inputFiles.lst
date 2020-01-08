@@ -38,6 +38,7 @@ D:\Controller\src\main\java\com\steve6472\controller\guis\BooleanGui.java
 D:\Controller\src\main\java\com\steve6472\controller\items\GetEntityType.java
 D:\Controller\src\main\java\com\steve6472\controller\items\SelfAddingItem.java
 D:\Controller\src\main\java\com\steve6472\controller\guis\EntityTypeGui.java
+D:\Controller\src\main\java\com\steve6472\controller\items\Goto.java
 D:\Controller\src\main\java\com\steve6472\controller\items\events\AddEvent.java
 D:\Controller\src\main\java\com\steve6472\controller\items\ifitem\ItemCondition.java
 D:\Controller\src\main\java\com\steve6472\controller\items\events\EventBreakBlock.java

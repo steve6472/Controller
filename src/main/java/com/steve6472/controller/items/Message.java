@@ -19,8 +19,6 @@ import org.bukkit.inventory.ItemStack;
  ***********************/
 public class Message extends CustomItem
 {
-	private boolean editing;
-
 	public Message(int id)
 	{
 		super(id, Material.NAME_TAG, "Message");
@@ -29,16 +27,21 @@ public class Message extends CustomItem
 	@Override
 	public void create(AdvancedGui gui, Player player)
 	{
-		gui.awaitInput(CustomItems.MESSAGE);
-		player.sendMessage(ChatColor.GREEN + "Type message: " + ChatColor.GRAY + " (type cancel to cancel)");
-		player.closeInventory();
+		String text = ChatColor.WHITE + "Message";
+
+		Bukkit.getPluginManager().callEvent(new AddStatementEvent(gui, this, player));
+
+		gui.setItem(gui.getEditingX(), gui.getEditingY(), CustomItems.MESSAGE.create(ChatColor.GRAY + "Text:", text));
+		gui.setItem(gui.getEditingX() + 1, gui.getEditingY(), CustomItems.MESSAGE_DELAY.create(ChatColor.WHITE + "Delay: " + ChatColor.GRAY + "1"));
+		gui.setItem(gui.getEditingX(), gui.getEditingY() + 1, CustomItems.STATEMENT.create());
+		gui.show(player);
 	}
 
 	@Override
 	public boolean edit(AdvancedGui gui, Player player)
 	{
 		gui.awaitInput(CustomItems.MESSAGE);
-		player.sendMessage(ChatColor.GREEN + "Type new message: ");
+		player.sendMessage(ChatColor.GREEN + "Type message: ");
 		player.sendMessage(ChatColor.GRAY + "(type cancel to cancel)");
 
 		ItemStack i = gui.getItem(gui.getEditingX(), gui.getEditingY());
@@ -51,9 +54,7 @@ public class Message extends CustomItem
 			player.spigot().sendMessage(click);
 		}
 
-
 		player.closeInventory();
-		editing = true;
 		return true;
 	}
 
@@ -80,15 +81,7 @@ public class Message extends CustomItem
 		String text = ChatColor.WHITE + input;
 		text = text.replace("&", "§");
 
-		if (!editing)
-			Bukkit.getPluginManager().callEvent(new AddStatementEvent(gui, this, player));
-
 		gui.setItem(gui.getEditingX(), gui.getEditingY(), CustomItems.MESSAGE.create(ChatColor.GRAY + "Text:", text));
-		gui.setItem(gui.getEditingX() + 1, gui.getEditingY(), CustomItems.MESSAGE_DELAY.create(ChatColor.WHITE + "Delay: " + ChatColor.GRAY + "0"));
-		if (!editing)
-			gui.setItem(gui.getEditingX(), gui.getEditingY() + 1, CustomItems.STATEMENT.create());
-		else
-			editing = false;
 
 		return true;
 	}

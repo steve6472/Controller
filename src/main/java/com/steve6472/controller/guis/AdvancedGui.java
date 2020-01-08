@@ -38,7 +38,6 @@ public class AdvancedGui
 	private CustomItem input;
 	private CustomItem pauseReason;
 
-	private boolean paused;
 	private int pauseX, pauseY;
 
 	public AdvancedGui(Player player)
@@ -270,7 +269,15 @@ public class AdvancedGui
 
 	public void run(Player player)
 	{
-		next(player, 0, 0, 0);
+		try
+		{
+			next(player, 0, 0, 0);
+		} catch (StackOverflowError e)
+		{
+			Bukkit.getScheduler().scheduleSyncDelayedTask(Controller.getInstance(), () -> player.sendMessage(ChatColor.RED + "java.lang.StackOverflowError"), 1);
+
+			Bukkit.getLogger().warning("java.lang.StackOverflowError from Controller");
+		}
 	}
 
 	public void next(Player player, int x, int y, long delay)
@@ -324,7 +331,6 @@ public class AdvancedGui
 	public void pause(Player player, CustomItem pauseReason, int nextX, int nextY)
 	{
 		this.pauseReason = pauseReason;
-		this.paused = true;
 		this.pauseX = nextX;
 		this.pauseY = nextY;
 
@@ -336,7 +342,6 @@ public class AdvancedGui
 		if (getPauseReason() != eventItem)
 			return;
 
-		paused = false;
 		pauseReason = null;
 
 		Controller.pausedGuis.remove(player);

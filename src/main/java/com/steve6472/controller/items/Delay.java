@@ -16,8 +16,7 @@ import org.bukkit.inventory.ItemStack;
  ***********************/
 public class Delay extends CustomItem
 {
-	private boolean editing;
-	private boolean isMessageDelay;
+	private final boolean isMessageDelay;
 
 	public Delay(int id, boolean isMessageDelay)
 	{
@@ -28,9 +27,15 @@ public class Delay extends CustomItem
 	@Override
 	public void create(AdvancedGui gui, Player player)
 	{
-		gui.awaitInput(CustomItems.DELAY);
-		player.sendMessage(ChatColor.GREEN + "Type delay: " + ChatColor.GRAY + " (type cancel to cancel)");
-		player.closeInventory();
+		Bukkit.getPluginManager().callEvent(new AddStatementEvent(gui, this, player));
+
+		if (isMessageDelay)
+			gui.setItem(gui.getEditingX(), gui.getEditingY(), CustomItems.MESSAGE_DELAY.create(ChatColor.WHITE + "Delay: " + ChatColor.GRAY + "1"));
+		else
+			gui.setItem(gui.getEditingX(), gui.getEditingY(), CustomItems.DELAY.create(ChatColor.WHITE + "Delay: " + ChatColor.GRAY + "1"));
+
+		if (!isMessageDelay)
+			gui.setItem(gui.getEditingX(), gui.getEditingY() + 1, CustomItems.STATEMENT.create());
 	}
 
 	@Override
@@ -40,9 +45,9 @@ public class Delay extends CustomItem
 			gui.awaitInput(CustomItems.MESSAGE_DELAY);
 		else
 			gui.awaitInput(CustomItems.DELAY);
-		player.sendMessage("Type new delay: ");
+		player.sendMessage("Type delay: ");
+		player.sendMessage(ChatColor.GRAY + "(type cancel to cancel)");
 		player.closeInventory();
-		editing = true;
 		return true;
 	}
 
@@ -77,19 +82,10 @@ public class Delay extends CustomItem
 			return true;
 		}
 
-		if (!editing)
-			Bukkit.getPluginManager().callEvent(new AddStatementEvent(gui, this, player));
-
 		if (isMessageDelay)
 			gui.setItem(gui.getEditingX(), gui.getEditingY(), CustomItems.MESSAGE_DELAY.create(ChatColor.WHITE + "Delay: " + ChatColor.GRAY + input));
 		else
 			gui.setItem(gui.getEditingX(), gui.getEditingY(), CustomItems.DELAY.create(ChatColor.WHITE + "Delay: " + ChatColor.GRAY + input));
-
-		if (!isMessageDelay)
-			if (!editing)
-				gui.setItem(gui.getEditingX(), gui.getEditingY() + 1, CustomItems.STATEMENT.create());
-			else
-				editing = false;
 
 		return true;
 	}
@@ -98,7 +94,8 @@ public class Delay extends CustomItem
 	{
 		for (char c : str.toCharArray())
 		{
-			if (!Character.isDigit(c)) return false;
+			if (!Character.isDigit(c))
+				return false;
 		}
 		return true;
 	}

@@ -27,6 +27,7 @@ com\steve6472\controller\items\GetItemInHand.class
 com\steve6472\controller\items\AddElse.class
 com\steve6472\controller\guis\ItemGui.class
 com\steve6472\controller\items\ifitem\IIfCondition.class
+com\steve6472\controller\items\Goto.class
 com\steve6472\controller\items\Operator.class
 com\steve6472\controller\items\GetEntityType.class
 com\steve6472\controller\items\Statement.class
