@@ -141,6 +141,17 @@ public abstract class CustomItem
 		return null;
 	}
 
+	public static CustomItem getCustomItem(int id)
+	{
+		for (CustomItem i : customItems)
+		{
+			if (i.getId() == id)
+				return i;
+		}
+
+		return null;
+	}
+
 	protected String getType(ItemStack item)
 	{
 		if (item.getItemMeta() == null)
@@ -160,5 +171,10 @@ public abstract class CustomItem
 		{
 			return "";
 		}
+	}
+
+	public static List<CustomItem> getCustomItems()
+	{
+		return customItems;
 	}
 }

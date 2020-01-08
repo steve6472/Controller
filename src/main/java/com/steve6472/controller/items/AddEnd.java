@@ -24,6 +24,7 @@ public class AddEnd extends CustomItem
 	public boolean edit(AdvancedGui gui, Player player)
 	{
 		gui.setItem(gui.getEditingX(), gui.getEditingY(), CustomItems.END.create());
+		gui.setItem(gui.getEditingX() + 1, gui.getEditingY(), CustomItems.NULL.create());
 		gui.setItem(gui.getEditingX(), gui.getEditingY() + 1, CustomItems.STATEMENT.create());
 		gui.show(player);
 		return true;

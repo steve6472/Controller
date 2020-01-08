@@ -14,7 +14,6 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 /**********************
@@ -49,6 +48,7 @@ public class If extends CustomItem implements Listener
 			return;
 
 		AdvancedGui gui = e.getGui();
+		boolean foundElse = false;
 
 		for (int i = e.getY(); i >= 0; i--)
 		{
@@ -56,6 +56,9 @@ public class If extends CustomItem implements Listener
 
 			if (item != null)
 			{
+				if (item == CustomItems.ELSE)
+					foundElse = true;
+
 				if (item == CustomItems.IF)
 				{
 					ItemStack ifItem = gui.getItem(e.getX() - 1, i);
@@ -65,21 +68,69 @@ public class If extends CustomItem implements Listener
 
 					if (meta.getLore() != null && !meta.getLore().isEmpty())
 					{
-						String[] coordinates = meta.getLore().get(0).substring(7).split("/");
-						int x = Integer.parseInt(coordinates[0]);
-						int y = Integer.parseInt(coordinates[1]);
-						for (int j = 0; j < e.getCustomItem().getHeight(); j++)
+						System.out.println(meta.getLore().size());
+						if (meta.getLore().size() == 2)
 						{
-							gui.insertColumn(y);
+							if (!foundElse)
+							{
+								line(meta, 1, gui, e);
+								updateEnd(ifItem, e);
+								updateElse(ifItem, e);
+							} else
+							{
+								line(meta, 0, gui, e);
+								updateEnd(ifItem, e);
+							}
+						} else
+						{
+							line(meta, 0, gui, e);
+							updateEnd(ifItem, e);
 						}
-
-						meta.setLore(Collections.singletonList(ChatColor.GRAY + "End: " + x + "/" + (y + e.getCustomItem().getHeight())));
-						ifItem.setItemMeta(meta);
 					}
 
 					break;
 				}
 			}
+		}
+	}
+
+	private void updateEnd(ItemStack item, AddStatementEvent e)
+	{
+		ItemMeta meta = item.getItemMeta();
+		/* Adds line before END */
+		String[] coordinates = meta.getLore().get(0).substring(7).split("/");
+		int x = Integer.parseInt(coordinates[0]);
+		int y = Integer.parseInt(coordinates[1]);
+
+		List<String> lore = meta.getLore();
+		lore.set(0, ChatColor.GRAY + "End: " + x + "/" + (y + e.getCustomItem().getHeight()));
+
+		meta.setLore(lore);
+		item.setItemMeta(meta);
+	}
+
+	private void updateElse(ItemStack item, AddStatementEvent e)
+	{
+		ItemMeta meta = item.getItemMeta();
+		/* Adds line before ELSE */
+		String[] coordinates = meta.getLore().get(1).substring(8).split("/");
+		int x = Integer.parseInt(coordinates[0]);
+		int y = Integer.parseInt(coordinates[1]);
+
+		List<String> lore = meta.getLore();
+		lore.set(1, ChatColor.GRAY + "Else: " + x + "/" + (y + e.getCustomItem().getHeight()));
+
+		meta.setLore(lore);
+		item.setItemMeta(meta);
+	}
+
+	private void line(ItemMeta meta, int index, AdvancedGui gui, AddStatementEvent e)
+	{
+		String[] coordinates = meta.getLore().get(index).substring(8).split("/");
+		int y = Integer.parseInt(coordinates[1]);
+		for (int j = 0; j < e.getCustomItem().getHeight(); j++)
+		{
+			gui.insertColumn(y);
 		}
 	}
 
@@ -93,6 +144,7 @@ public class If extends CustomItem implements Listener
 		gui.setItem(gui.getEditingX() + 1, gui.getEditingY(), CustomItems.ADD_BOOLEAN.create());
 		gui.setItem(gui.getEditingX() + 2, gui.getEditingY(), CustomItems.BOOLEAN_OPERATOR_OR_DO.create());
 		gui.setItem(gui.getEditingX(), gui.getEditingY() + 2, CustomItems.ADD_END.create());
+		gui.setItem(gui.getEditingX() + 1, gui.getEditingY() + 2, CustomItems.ADD_ELSE.create());
 
 		gui.show(player);
 	}
@@ -102,6 +154,18 @@ public class If extends CustomItem implements Listener
 	{
 		if (evaluate(player, gui, x + 1, y, true))
 			gui.next(player, x + 1, y + 1, delay);
+		else
+		{
+			ItemStack item = gui.getItem(x, y);
+			if (item.getItemMeta() == null)
+				return;
+
+			if (item.getItemMeta().getLore() != null && item.getItemMeta().getLore().size() == 2)
+			{
+				String[] coordinates = item.getItemMeta().getLore().get(1).substring(8).split("/");
+				gui.next(player, Integer.parseInt(coordinates[0]) + 1, Integer.parseInt(coordinates[1]) + 1, delay);
+			}
+		}
 
 		ItemStack item = gui.getItem(x, y);
 		if (item.getItemMeta() == null)

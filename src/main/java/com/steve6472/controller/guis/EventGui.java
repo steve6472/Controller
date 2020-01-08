@@ -25,6 +25,7 @@ public class EventGui implements IControllerGui
 		inv.setItem(3, CustomItems.EVENT_PICKUP_ITEM.create());
 		inv.setItem(4, CustomItems.EVENT_CONSUME_ITEM.create());
 		inv.setItem(5, CustomItems.EVENT_FISH.create());
+		inv.setItem(5, CustomItems.EVENT_INTERACT_ENTITY.create());
 
 		fillWithNull(inv);
 		player.openInventory(inv);

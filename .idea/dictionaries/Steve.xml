@@ -2,9 +2,20 @@
   <dictionary name="Steve">
     <words>
       <w>chestplate</w>
+      <w>ender</w>
+      <w>enderman</w>
+      <w>endermite</w>
+      <w>evoker</w>
+      <w>ghast</w>
+      <w>golem</w>
       <w>guis</w>
+      <w>illusioner</w>
       <w>jozefek</w>
+      <w>minecart</w>
       <w>mirek</w>
+      <w>pufferfish</w>
+      <w>shulker</w>
+      <w>spawner</w>
     </words>
   </dictionary>
 </component>

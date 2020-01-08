@@ -24,7 +24,6 @@ public class AddBooleanOperator extends CustomItem
 	public boolean edit(AdvancedGui gui, Player player)
 	{
 		Controller.getGui(BooleanGui.class).open(player);
-//		gui.getBooleanGui().open(player);
 		return true;
 	}
 

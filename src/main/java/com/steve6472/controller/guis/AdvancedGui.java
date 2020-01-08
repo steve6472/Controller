@@ -19,6 +19,9 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**********************
  * Created by steve6472 (Mirek Jozefek)
  * On date: 03.01.2020
@@ -235,7 +238,20 @@ public class AdvancedGui
 					if (items[X][Y] == null)
 						inv.setItem(slot, CustomItems.NULL.create());
 					else
-						inv.setItem(slot, items[X][Y]);
+					{
+						ItemStack item = new ItemStack(items[X][Y]);
+						if (item.getItemMeta() != null)
+						{
+							ItemMeta meta = item.getItemMeta();
+							List<String> lore = meta.getLore();
+							if (lore == null)
+								lore = new ArrayList<>();
+							lore.add(ChatColor.DARK_GRAY + "" + X + "/" + Y);
+							meta.setLore(lore);
+							item.setItemMeta(meta);
+						}
+						inv.setItem(slot, item);
+					}
 			}
 		}
 

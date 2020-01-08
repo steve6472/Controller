@@ -1,6 +1,7 @@
 package com.steve6472.controller;
 
 import com.steve6472.controller.guis.*;
+import com.steve6472.controller.items.ifitem.EntityTypeCondition;
 import com.steve6472.controller.items.ifitem.If;
 import com.steve6472.controller.items.ifitem.ItemCondition;
 import org.bukkit.Bukkit;
@@ -152,11 +153,13 @@ public final class Controller extends JavaPlugin implements Listener
 		Bukkit.getPluginManager().registerEvents(this, INSTANCE);
 
 		If.addCondition(new ItemCondition());
+		If.addCondition(new EntityTypeCondition());
 
 		addGui(StatementGui.class, new StatementGui());
 		addGui(BooleanGui.class, new BooleanGui());
 		addGui(ItemGui.class, new ItemGui());
 		addGui(EventGui.class, new EventGui());
+		addGui(EntityTypeGui.class, new EntityTypeGui());
 	}
 
 	@Override
